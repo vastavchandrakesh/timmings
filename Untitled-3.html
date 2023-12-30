@@ -8,16 +8,24 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background-color: #f0f0f0;
+            background-color: #f1eaea;
+            background-image: url('https://images.unsplash.com/photo-1579547628408-94c243fd0bd5'); /* Butterfly image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            color: #333; /* Text color on the background */
+            margin: 0;
+            padding: 0;
         }
 
         h1 {
-            color: #333;
             margin-bottom: 50px;
+            color: #333;
         }
 
         form {
-            background-color: #87867a24;
+            background-color: rgba(135, 134, 122, 0.15);
             padding: 20px;
             max-width: 500px;
             margin: 0 auto;
@@ -25,7 +33,7 @@
         }
 
         input[type="number"] {
-            width: 100%;
+            width: calc(50% - 45px); /* Adjusting width to accommodate radio buttons */
             padding: 10px;
             margin-bottom: 20px;
             box-sizing: border-box;
@@ -34,54 +42,48 @@
             font-size: 16px;
         }
 
+        input[type="radio"] {
+            margin-right: 2px;
+        }
+
         button[type="button"] {
-            width: 100%;
+            width: 90%;
             padding: 10px;
             background-color: #f33308;
             color: white;
             border: none;
             cursor: pointer;
             border-radius: 5px;
-            font-size: 16px;
+            font-size: 14px;
         }
 
         button[type="button"]:hover {
             background-color: #45a049;
         }
-
-        .calculator {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-gap: 10px;
-            margin-top: 20px;
-        }
-
-        .calculator button {
-            width: 100%;
-            padding: 10px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        .calculator button:hover {
-            background-color: #0056b3;
-        }
     </style>
 </head>
 <body>
-    <h1>Timing Converter</h1>    
+    <h1>Timing Converter</h1>
+    
     <!-- Duration Calculation Section -->
     <section>
         <h2>Duration Calculation</h2>
         <form>
             <label for="start-time">Start Time:</label>
-            <input type="time" id="start-time" name="start-time">
+            <input type="number" id="start-hour" name="start-hour" min="1" max="12">
+            <input type="number" id="start-minute" name="start-minute" min="0" max="59">
+            <label for="start-am-pm">AM</label>
+            <input type="radio" id="start-am" name="start-am-pm" value="AM" checked>
+            <label for="start-am-pm">PM</label>
+            <input type="radio" id="start-pm" name="start-am-pm" value="PM">
+            <br>
             <label for="end-time">End Time:</label>
-            <input type="time" id="end-time" name="end-time">
+            <input type="number" id="end-hour" name="end-hour" min="1" max="12">
+            <input type="number" id="end-minute" name="end-minute" min="0" max="59">
+            <label for="end-am-pm">AM</label>
+            <input type="radio" id="end-am" name="end-am-pm" value="AM" checked>
+            <label for="end-am-pm">PM</label>
+            <input type="radio" id="end-pm" name="end-am-pm" value="PM">
             <br>
             <label for="duration-minutes">Minutes:</label>
             <input type="number" id="duration-minutes" name="duration-minutes" readonly>
@@ -89,28 +91,26 @@
             <label for="duration-hours">Hours:</label>
             <input type="number" id="duration-hours" name="duration-hours" readonly>
             <br>
-            <!-- Add a field for Days if needed -->
-            <!-- <label for="duration-days">Days:</label>
-            <input type="number" id="duration-days" name="duration-days" readonly> -->
             <button type="button" onclick="calculateDuration()">Calculate Duration</button>
         </form>
     </section>
-    <!-- Minutes to Hours and Hours to Minutes Conversion Section -->
+	
+	<!-- Minutes to Hours and Hours to Minutes Conversion Section -->
     <section>
         <h2>Conversion: Minutes to Hours & Hours to Minutes</h2>
         <form>
             <label for="mints-to-hours">Minutes:</label>
             <input type="number" id="mints-to-hours" name="mints-to-hours">
-            <button type="button" onclick="convertMintsToHours()">Convert to Hours</button>
+            <button type="button" onclick="convertMintsToHours()">Convert to Hours</button>														  
             <br>
             <label for="hours-to-mints">Hours:</label>
             <input type="number" id="hours-to-mints" name="hours-to-mints">
             <button type="button" onclick="convertHoursToMints()">Convert to Minutes</button>
         </form>
     </section>
-    <!-- Arithmetic Operation Section -->
+
     <section>
-        <h2>Arithmetic Operation</h2>
+        <h3>Arithmetic Operation</h2>
         <form>
             <label for="num1">Number 1:</label>
             <input type="number" id="num1" name="num1">
@@ -123,6 +123,7 @@
             <button type="button" onclick="calculateSum()">Calculate Sum</button>
         </form>
     </section>
+
     <script>
         function convertMintsToHours() {
             let mints = document.getElementById('mints-to-hours').value;
@@ -134,7 +135,6 @@
             let mints = hours * 60;
             document.getElementById('mints-to-hours').value = mints.toFixed(2);
         }
-
         function calculateSum() {
             let num1 = parseFloat(document.getElementById('num1').value) || 0;
             let num2 = parseFloat(document.getElementById('num2').value) || 0;
@@ -142,7 +142,6 @@
             let sum = num1 + num2 + num3;
             document.getElementById('sum-result').value = sum.toFixed(2);
         }
-
         function calculateDuration() {
             let startTime = document.getElementById('start-time').value;								   
             let endTime = document.getElementById('end-time').value;
@@ -157,6 +156,43 @@
             document.getElementById('duration-hours').value = durationHours.toFixed(2);
             document.getElementById('duration-days').value = durationDays.toFixed(2);
         }
+		
+        function calculateDuration() {
+            let startHour = parseInt(document.getElementById('start-hour').value);
+            let startMinute = parseInt(document.getElementById('start-minute').value);
+            let startAMPM = document.querySelector('input[name="start-am-pm"]:checked').value;
+
+            let endHour = parseInt(document.getElementById('end-hour').value);
+            let endMinute = parseInt(document.getElementById('end-minute').value);
+            let endAMPM = document.querySelector('input[name="end-am-pm"]:checked').value;
+
+            if (startAMPM === 'PM' && startHour !== 12) {
+                startHour += 12;
+            }
+
+            if (endAMPM === 'PM' && endHour !== 12) {
+                endHour += 12;
+            }
+
+            if (startAMPM === 'AM' && startHour === 12) {
+                startHour = 0;
+            }
+
+            if (endAMPM === 'AM' && endHour === 12) {
+                endHour = 0;
+            }
+
+            let durationMinutes = (endHour * 60 + endMinute) - (startHour * 60 + startMinute);
+            if (durationMinutes < 0) {
+                durationMinutes += 24 * 60;
+            }
+
+            let durationHours = Math.floor(durationMinutes / 60);
+
+            document.getElementById('duration-minutes').value = durationMinutes.toFixed(2);
+            document.getElementById('duration-hours').value = durationHours.toFixed(2);
+        }
     </script>
+	
 </body>
 </html>
