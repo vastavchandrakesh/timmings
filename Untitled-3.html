@@ -73,41 +73,56 @@
     </style>
 </head>
 <body>
-    <h1>Timing Converter</h1>
-    <form>
-        <label for="start-time">Start Time:</label>
-        <input type="time" id="start-time" name="start-time">
-        <label for="end-time">End Time:</label>
-        <input type="time" id="end-time" name="end-time">
-        <br>
-        <label for="duration-minutes">Minutes:</label>
-        <input type="number" id="duration-minutes" name="duration-minutes" readonly>
-        <br>
-        <label for="duration-hours">Hours:</label>
-        <input type="number" id="duration-hours" name="duration-hours" readonly>
-        <button type="button" onclick="calculateDuration()">Calculate Duration</button>	   
-        <br>
-
-        <label for="mints-to-hours">Minutes:</label>
-        <input type="number" id="mints-to-hours" name="mints-to-hours">
-        <button type="button" onclick="convertMintsToHours()">Convert to Hours</button>														  
-        <br>
-        <label for="hours-to-mints">Hours:</label>
-        <input type="number" id="hours-to-mints" name="hours-to-mints">
-        <button type="button" onclick="convertHoursToMints()">Convert to Minutes</button>
-        <br>
-        <label for="num1">Number 1:</label>
-        <input type="number" id="num1" name="num1">
-        <label for="num2">Number 2:</label>
-        <input type="number" id="num2" name="num2">
-        <label for="num3">Number 3:</label>
-        <input type="number" id="num3" name="num3">
-        <label for="sum-result">Result:</label>
-        <input type="number" id="sum-result" name="sum-result" readonly>
-        <button type="button" onclick="calculateSum()">Calculate Sum</button>
-        <br>
-    </form>
-
+    <h1>Timing Converter</h1>    
+    <!-- Duration Calculation Section -->
+    <section>
+        <h2>Duration Calculation</h2>
+        <form>
+            <label for="start-time">Start Time:</label>
+            <input type="time" id="start-time" name="start-time">
+            <label for="end-time">End Time:</label>
+            <input type="time" id="end-time" name="end-time">
+            <br>
+            <label for="duration-minutes">Minutes:</label>
+            <input type="number" id="duration-minutes" name="duration-minutes" readonly>
+            <br>
+            <label for="duration-hours">Hours:</label>
+            <input type="number" id="duration-hours" name="duration-hours" readonly>
+            <br>
+            <!-- Add a field for Days if needed -->
+            <!-- <label for="duration-days">Days:</label>
+            <input type="number" id="duration-days" name="duration-days" readonly> -->
+            <button type="button" onclick="calculateDuration()">Calculate Duration</button>
+        </form>
+    </section>
+    <!-- Minutes to Hours and Hours to Minutes Conversion Section -->
+    <section>
+        <h2>Conversion: Minutes to Hours & Hours to Minutes</h2>
+        <form>
+            <label for="mints-to-hours">Minutes:</label>
+            <input type="number" id="mints-to-hours" name="mints-to-hours">
+            <button type="button" onclick="convertMintsToHours()">Convert to Hours</button>
+            <br>
+            <label for="hours-to-mints">Hours:</label>
+            <input type="number" id="hours-to-mints" name="hours-to-mints">
+            <button type="button" onclick="convertHoursToMints()">Convert to Minutes</button>
+        </form>
+    </section>
+    <!-- Arithmetic Operation Section -->
+    <section>
+        <h2>Arithmetic Operation</h2>
+        <form>
+            <label for="num1">Number 1:</label>
+            <input type="number" id="num1" name="num1">
+            <label for="num2">Number 2:</label>
+            <input type="number" id="num2" name="num2">
+            <label for="num3">Number 3:</label>
+            <input type="number" id="num3" name="num3">
+            <label for="sum-result">Result:</label>
+            <input type="number" id="sum-result" name="sum-result" readonly>
+            <button type="button" onclick="calculateSum()">Calculate Sum</button>
+        </form>
+    </section>
     <script>
         function convertMintsToHours() {
             let mints = document.getElementById('mints-to-hours').value;
