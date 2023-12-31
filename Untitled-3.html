@@ -9,12 +9,12 @@
             font-family: Arial, sans-serif;
             text-align: center;
             background-color: #f1eaea;
-            background-image: url('https://images.unsplash.com/photo-1579547628408-94c243fd0bd5'); /* Butterfly image */
+            background-image: url('image/image.jpg'); /* Butterfly image */
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-position: center;
-            color: #333; /* Text color on the background */
+            color: #f5eeee; /* Text color on the background */
             margin: 0;
             padding: 0;
         }
@@ -25,7 +25,7 @@
         }
 
         form {
-            background-color: rgba(135, 134, 122, 0.15);
+            background-color: rgba(247, 246, 231, 0.15);
             padding: 20px;
             max-width: 500px;
             margin: 0 auto;
@@ -99,13 +99,12 @@
     <section>
         <h2>Conversion: Minutes to Hours & Hours to Minutes</h2>
         <form>
-            <label for="mints-to-hours">Minutes:</label>
+            <label for="mints-to-hours">Minutes:</label><br><br>
             <input type="number" id="mints-to-hours" name="mints-to-hours">
-            <button type="button" onclick="convertMintsToHours()">Convert to Hours</button>														  
-            <br>
-            <label for="hours-to-mints">Hours:</label>
+            <button type="button" onclick="convertMintsToHours()">Convert to Hours</button><br><br>											  
+            <label for="hours-to-mints">Hours:</label><br><br>
             <input type="number" id="hours-to-mints" name="hours-to-mints">
-            <button type="button" onclick="convertHoursToMints()">Convert to Minutes</button>
+            <button type="button" onclick="convertHoursToMints()">Convert to Minutes</button><br><br>
         </form>
     </section>
 
@@ -113,11 +112,14 @@
         <h3>Arithmetic Operation</h2>
         <form>
             <label for="num1">Number 1:</label>
-            <input type="number" id="num1" name="num1">
+            <input type="number" id="num1" name="num1"><br><br>
+
             <label for="num2">Number 2:</label>
-            <input type="number" id="num2" name="num2">
+            <input type="number" id="num2" name="num2"><br><br>
+
             <label for="num3">Number 3:</label>
-            <input type="number" id="num3" name="num3">
+            <input type="number" id="num3" name="num3"><br><br>
+
             <label for="sum-result">Result:</label>
             <input type="number" id="sum-result" name="sum-result" readonly>
             <button type="button" onclick="calculateSum()">Calculate Sum</button>
